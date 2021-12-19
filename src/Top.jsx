@@ -80,11 +80,11 @@ export default function Top() {
         case 1:
           return { backgroundColor: URGENT_IMPORTANT_COLOR, color: 'white' };
         case 2:
-          return { backgroundColor: IMPORTANT_COLOR, color: 'white' };
-        case 3:
           return { backgroundColor: URGENT_COLOR, color: 'white' };
-        case 4:
+        case 3:
           return { backgroundColor: NORMAL_COLOR, color: 'white' };
+        case 4:
+          return { backgroundColor: IMPORTANT_COLOR, color: 'white' };
         default:
           return { backgroundColor: URGENT_IMPORTANT_COLOR, color: 'white' };
       }
@@ -123,9 +123,9 @@ export default function Top() {
           </Space>
           <Space size={0}>
             <button className='top-button' style={getButtonStyle(1)} onClick={() => setQuadrant(1)}>重要紧急</button>
-            <button className='top-button' style={getButtonStyle(2)} onClick={() => setQuadrant(2)}>重要不紧急</button>
-            <button className='top-button' style={getButtonStyle(3)} onClick={() => setQuadrant(3)}>不重要但紧急</button>
-            <button className='top-button' style={getButtonStyle(4)} onClick={() => setQuadrant(4)}>不重要不紧急</button>
+            <button className='top-button' style={getButtonStyle(2)} onClick={() => setQuadrant(2)}>不重要但紧急</button>
+            <button className='top-button' style={getButtonStyle(3)} onClick={() => setQuadrant(3)}>不重要不紧急</button>
+            <button className='top-button' style={getButtonStyle(4)} onClick={() => setQuadrant(4)}>重要不紧急</button>
           </Space>
           <Input placeholder="添加任务摘要" value={title4Add} onChange={e => setTitle4Add(e.target.value)} />
           <TextArea placeholder="添加任务详情" showCount maxLength={500} rows={4} value={detail4Add} onChange={e => setDetail4Add(e.target.value)} />
