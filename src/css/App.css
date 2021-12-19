@@ -1,0 +1,11 @@
+.App {
+  max-height: 100vh;
+  overflow: auto;
+  background-color: '#F0F8FF',
+}
+
+.row {
+  display: flex;
+  height: calc((100vh - 52px) / 2);
+  width: 100%;
+}
