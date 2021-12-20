@@ -70,6 +70,10 @@ class Database {
   getItemByKey(key) {
     return this._executeSQL(`SELECT * FROM ${this.tableName} WHERE key = ?`, [key], 'rows');
   }
+
+  updateDoneByKey(key, done) {
+    return this._executeSQL(`UPDATE ${this.tableName} SET done = ? WHERE key = ?`, [done, key], 'rowsAffected');
+  }
 }
 
 export default new Database();

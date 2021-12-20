@@ -129,7 +129,7 @@ export default function Top() {
           </Space>
           <Input placeholder="添加任务摘要" value={title4Add} onChange={e => setTitle4Add(e.target.value)} />
           <TextArea placeholder="添加任务详情" showCount maxLength={500} rows={4} value={detail4Add} onChange={e => setDetail4Add(e.target.value)} />
-        </Space>    
+        </Space>
       </Modal>
     </div>
   );

@@ -11,9 +11,19 @@ export default function Item(props) {
   const [isDone, setIsDone] = useState(done);
   const ctx = useContext(AppContext);
   const { Database, setRandomKey } = ctx;
+  const doneStyle = {
+    textDecoration: 'line-through',
+    color: 'gray',
+  };
 
   function onChange(e) {
-    setIsDone(e.target.checked);
+    const done = !isDone ? 1 : 0; // 取反是因为这时状态还没有更新
+    Database.updateDoneByKey(key, done).then(res => {
+      if (res === 1) {
+        setIsDone(e.target.checked);
+        setRandomKey(Math.random());
+      }
+    })
   }
 
   function deleteItem() {
@@ -58,7 +68,7 @@ export default function Item(props) {
   return (
     <div className='item-div'>
       <Checkbox checked={isDone} onChange={onChange}></Checkbox>
-      <span className='item-span'>{title}</span>
+      <span className='item-span' style={isDone ? doneStyle: {}}>{title}</span>
       <span className='item-detail' onClick={detailItem}><FileTextOutlined /></span>
       <span className='item-edit' onClick={deleteItem}><EditOutlined /></span>
       <span className='item-del' onClick={deleteItem}><DeleteOutlined /></span>
