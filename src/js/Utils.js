@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function dateType2Num(type) {
   switch (type) {
     case 'date':
@@ -50,4 +52,35 @@ export function SQLResultSetRowList2Arr(list) {
   }
 
   return arr;
+}
+
+export function quadrant2Text(quadrant) {
+  switch (quadrant) {
+    case 1:
+      return '重要且紧急';
+    case 2:
+      return '不重要但紧急';
+    case 3:
+      return '不重要不紧急';
+    case 4:
+      return '重要但不紧急';
+    default:
+      return '';
+  }
+}
+
+export function dtFormat(dt, dttype) {
+  console.log(`${moment(dt).format("YYYY年第ww周")}`)
+  switch (dttype) {
+    case 1:
+      return moment(dt).format("YYYY年MM月DD日");
+    case 2:
+      return `${moment(dt).format("YYYY年第ww周")}`;
+    case 3:
+      return moment(dt).format("YYYY年MM月");
+    case 4:
+      return moment(dt).format("YYYY年");
+    default:
+      return moment(dt).format("YYYY年MM月DD日");
+  }
 }

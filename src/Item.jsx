@@ -1,10 +1,9 @@
-import { Modal, Checkbox, Descriptions } from 'antd';
+import { Modal, Checkbox, Descriptions, Badge } from 'antd';
 import { DeleteOutlined, EditOutlined, FileTextOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { useState, useContext } from 'react';
 import { AppContext } from './js/Context';
 import './css/Item.css';
-import { num2DateTypeZh } from './js/Utils';
-import moment from 'moment';
+import { dtFormat, num2DateTypeZh, quadrant2Text } from './js/Utils';
 
 export default function Item(props) {
   const { key, title, dttype, dt, done, quadrant, detail } = props.itemInfo;
@@ -46,7 +45,7 @@ export default function Item(props) {
   function detailItem() {
     Modal.info({
       title: '任务详情',
-      width: 600,
+      width: 650,
       content: (
         <Descriptions
           title=""
@@ -55,9 +54,9 @@ export default function Item(props) {
         >
           <Descriptions.Item label="摘要" span={4}>{title}</Descriptions.Item>
           <Descriptions.Item label="时间模式" span={2}>{num2DateTypeZh(dttype)}</Descriptions.Item>
-          <Descriptions.Item label="日期" span={2}>{moment(dt).format("YYYY-MM-DD")}</Descriptions.Item>
-          <Descriptions.Item label="重要紧急程度" span={2}>{quadrant}</Descriptions.Item>
-          <Descriptions.Item label="完成情况" span={2}>{done}</Descriptions.Item>
+          <Descriptions.Item label="日期" span={2}>{dtFormat(dt, dttype)}</Descriptions.Item>
+          <Descriptions.Item label="重要紧急程度" span={2}>{quadrant2Text(quadrant)}</Descriptions.Item>
+          <Descriptions.Item label="完成情况" span={2}><Badge status={done === 0 ? "processing" : "success"} text={done === 0 ? "进行中" : "已完成"}/></Descriptions.Item>
           <Descriptions.Item label="详情" span={4}>{detail}</Descriptions.Item>
         </Descriptions>
       ),
@@ -70,7 +69,7 @@ export default function Item(props) {
       <Checkbox checked={isDone} onChange={onChange}></Checkbox>
       <span className='item-span' style={isDone ? doneStyle: {}}>{title}</span>
       <span className='item-detail' onClick={detailItem}><FileTextOutlined /></span>
-      <span className='item-edit' onClick={deleteItem}><EditOutlined /></span>
+      {/* <span className='item-edit' onClick={deleteItem}><EditOutlined /></span> */}
       <span className='item-del' onClick={deleteItem}><DeleteOutlined /></span>
     </div>
   );

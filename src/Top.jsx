@@ -122,10 +122,10 @@ export default function Top() {
             <DatePicker allowClear={false} picker={type4Add} onChange={value => setDt4Add(value)} value={dt4Add} />
           </Space>
           <Space size={0}>
-            <button className='top-button' style={getButtonStyle(1)} onClick={() => setQuadrant(1)}>重要紧急</button>
+            <button className='top-button' style={getButtonStyle(1)} onClick={() => setQuadrant(1)}>重要且紧急</button>
             <button className='top-button' style={getButtonStyle(2)} onClick={() => setQuadrant(2)}>不重要但紧急</button>
             <button className='top-button' style={getButtonStyle(3)} onClick={() => setQuadrant(3)}>不重要不紧急</button>
-            <button className='top-button' style={getButtonStyle(4)} onClick={() => setQuadrant(4)}>重要不紧急</button>
+            <button className='top-button' style={getButtonStyle(4)} onClick={() => setQuadrant(4)}>重要但不紧急</button>
           </Space>
           <Input placeholder="添加任务摘要" value={title4Add} onChange={e => setTitle4Add(e.target.value)} />
           <TextArea placeholder="添加任务详情" showCount maxLength={500} rows={4} value={detail4Add} onChange={e => setDetail4Add(e.target.value)} />
