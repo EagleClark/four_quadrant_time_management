@@ -67,6 +67,7 @@ export default function Top() {
   }
 
   function dtChange(value) {
+    console.log(value)
     dispatch({ type: 'DT_CHANGE', dttype: state.dttype, dt: value });
   }
 

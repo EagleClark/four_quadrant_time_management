@@ -70,7 +70,6 @@ export function quadrant2Text(quadrant) {
 }
 
 export function dtFormat(dt, dttype) {
-  console.log(`${moment(dt).format("YYYY年第ww周")}`)
   switch (dttype) {
     case 1:
       return moment(dt).format("YYYY年MM月DD日");

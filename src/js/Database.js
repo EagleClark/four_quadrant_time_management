@@ -35,8 +35,8 @@ class Database {
         tx.executeSql(
           sqlStr,
           args,
-          (tx, results) => { if (field) { resolve(results[field]) } else { resolve(results) }},
-          (tx, error) => {reject(error)},
+          (tx, results) => { if (field) { resolve(results[field]) } else { resolve(results) } },
+          (tx, error) => { reject(error) },
         );
       });
     });
@@ -57,7 +57,22 @@ class Database {
     switch (dttype) {
       case 1:
         st = +moment(dt.format("YYYY-MM-DD"));
-        et = st + 3600 * 24 * 1000 - 1;
+        et = +moment(st).add(1, 'days') - 1;
+        break;
+      case 2:
+        const weekday = dt.weekday();
+        st = +moment(moment(dt).subtract(weekday, 'days').format("YYYY-MM-DD"));
+        et = +moment(st).add(7, 'days') - 1;
+        break;
+      case 3:
+        const date = dt.date();
+        st = +moment(moment(dt).subtract(date - 1, 'days').format("YYYY-MM-DD"));
+        et = +moment(st).add(1, 'months') - 1;
+        break;
+      case 4:
+        const dateOfYear = dt.dayOfYear();
+        st = +moment(moment(dt).subtract(dateOfYear - 1, 'days').format("YYYY-MM-DD"));
+        et = +moment(st).add(1, 'years') - 1;
         break;
       default:
         break;
