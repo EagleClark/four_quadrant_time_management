@@ -49,5 +49,67 @@
     "electron": "^16.0.4",
     "electron-builder": "^22.14.5",
     "wait-on": "^6.0.0"
+  },
+  "build": {
+    "extends": null,
+    "productName": "four_quadrant_time_management",
+    "copyright": "©2021 EagleClark, Inc.",
+    "appId": "com.fqtm.app",
+    "directories": {
+      "output": "build-electron"
+    },
+    "files": [
+      "main/**/*",
+      "build/**/*"
+    ],
+    "extraResources": [
+      {
+        "filter": []
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./public/favicon.ico",
+      "uninstallerIcon": "./public/favicon.ico",
+      "installerHeaderIcon": "./public/favicon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "four_quadrant_time_management"
+    },
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "dmg": {
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 500,
+        "height": 500
+      }
+    }
   }
 }
