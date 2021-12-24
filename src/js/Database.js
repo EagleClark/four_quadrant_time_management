@@ -89,6 +89,11 @@ class Database {
   updateDoneByKey(key, done) {
     return this._executeSQL(`UPDATE ${this.tableName} SET done = ? WHERE key = ?`, [done, key], 'rowsAffected');
   }
+
+  updateItemByKey(key, itemData) {
+    const sqlStr = `UPDATE ${this.tableName} SET dttype = ?, dt = ?, title = ?, quadrant = ?, detail = ? WHERE key = ?`
+    return this._executeSQL(sqlStr, [...itemData, key], 'rowsAffected');
+  }
 }
 
 export default new Database();

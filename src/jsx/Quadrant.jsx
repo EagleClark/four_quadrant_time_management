@@ -1,6 +1,6 @@
 import Item from "./Item";
-import './css/Quadrant.css';
-import { IMPORTANT_COLOR, NORMAL_COLOR, URGENT_COLOR, URGENT_IMPORTANT_COLOR } from "./js/Constant";
+import '../css/Quadrant.css';
+import { IMPORTANT_COLOR, NORMAL_COLOR, URGENT_COLOR, URGENT_IMPORTANT_COLOR } from "../js/Constant";
 
 export default function Quadrant(props) {
   const { quadrant, data } = props;

@@ -1,5 +1,5 @@
-import Quadrant from "./Quadrant";
-import Top from "./Top";
+import Quadrant from "./jsx/Quadrant";
+import Top from "./jsx/Top";
 import './css/App.css';
 import { useEffect, useReducer, useState } from "react";
 import { AppContext } from './js/Context';
